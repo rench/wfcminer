@@ -6,8 +6,8 @@
 4. [其他安装](https://www.docker-cn.com/community-edition#/download)
 
 # wificoin 节点运行
-1. 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificon:pre-release`
-2. 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificon:pre-release wificon:pre-release`
+1. 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:pre-release`
+2. 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:pre-release wificoin:pre-release`
 3. 在本地(例如:`D:/wificoin`或者`/home/user/.wificoin`)创建`wificoin.conf`
 ```
 listen=1
@@ -17,12 +17,12 @@ rpcuser=test
 rpcpassword=admin
 rpcallowip=0.0.0.0/0
 ```
-4. 启动节点 `docker run -p 9665:9665 -p 9666:9666 -v D:/wificon:/root/.wificoin -d --rm --name wificoin wificon:pre-release`
+4. 启动节点 `docker run -p 9665:9665 -p 9666:9666 -v D:/wificoin:/root/.wificoin -d --rm --name wificoin wificoin:pre-release`
 
 - `-v` 进行本地主机和docker进行文件的挂载映射,用`:`分隔
-- `D:/wificon` 本机存放wificoin.conf文件的目录,节点启动后,会同步数据.
+- `D:/wificoin` 本机存放wificoin.conf文件的目录,节点启动后,会同步数据.
 - `/root/.wificoin` 固定不变
-- `-v D:/wificon:/root/.wificoin` 就是把docker容器中的`/root/.wificoin`目录映射到本地的`D:/wificon`,容器中对`/root/.wificoin`所有操作将直接生效于`D:/wificon`.
+- `-v D:/wificoin:/root/.wificoin` 就是把docker容器中的`/root/.wificoin`目录映射到本地的`D:/wificoin`,容器中对`/root/.wificoin`所有操作将直接生效于`D:/wificoin`.
 
 > docker容器停止后,容器中所有新产生的运行时数据将丢失.所以挂载文件到本地是强烈建议的.
 
