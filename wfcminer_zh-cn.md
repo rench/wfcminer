@@ -6,8 +6,8 @@
 4. [其他安装](https://www.docker-cn.com/community-edition#/download)
 
 # wificoin 节点运行
-1. 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:pre-release`
-2. 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:pre-release wificoin:pre-release`
+1. 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:latest`
+2. 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wificoin:latest wificoin:latest`
 3. 在本地(例如:`D:/wificoin`或者`/home/user/.wificoin`)创建`wificoin.conf`
 ```
 listen=1
@@ -17,7 +17,7 @@ rpcuser=test
 rpcpassword=admin
 rpcallowip=0.0.0.0/0
 ```
-4. 启动节点 `docker run -p 9665:9665 -p 9666:9666 -v D:/wificoin:/root/.wificoin -d --rm --name wificoin wificoin:pre-release`
+4. 启动节点 `docker run -p 9665:9665 -p 9666:9666 -v D:/wificoin:/root/.wificoin -d --rm --name wificoin wificoin:latest`
 
 - `-v` 进行本地主机和docker进行文件的挂载映射,用`:`分隔
 - `D:/wificoin` 本机存放wificoin.conf文件的目录,节点启动后,会同步数据.
@@ -27,9 +27,9 @@ rpcallowip=0.0.0.0/0
 > docker容器停止后,容器中所有新产生的运行时数据将丢失.所以挂载文件到本地是强烈建议的.
 
 # wfcminer 矿机运行
-- 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wfcminer:pre-release`
-- 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wfcminer:pre-release wfcminer:pre-release`
-- 启动节点 `docker run -d --rm --name wfcminer wfcminer:pre-release minerd -o http://192.168.1.123:9665 -u test -p admin  --no-getwork -a sha256d --coinbase-addr=wiijXST1RShBC4eAo56PqXoipX1RKFQ49o -t 2`
+- 拉取镜像到本地 `docker pull registry.cn-hangzhou.aliyuncs.com/wificoin-project/wfcminer:latest`
+- 镜像重新命令 `docker tag registry.cn-hangzhou.aliyuncs.com/wificoin-project/wfcminer:latest wfcminer:latest`
+- 启动节点 `docker run -d --rm --name wfcminer wfcminer:latest minerd -o http://192.168.1.123:9665 -u test -p admin  --no-getwork -a sha256d --coinbase-addr=wiijXST1RShBC4eAo56PqXoipX1RKFQ49o -t 2`
 - `-o http://192.168.1.123:9665` 一般是主机(内网/公网)ip地址+端口
 - `-t 2` 表示使用2个线程来跑
 - `-u test -p admin` 来源于`wificoin.conf` 的`rpcuser`和`rpcpassword`
